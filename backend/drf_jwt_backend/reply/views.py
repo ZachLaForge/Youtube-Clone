@@ -9,12 +9,6 @@ from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
-@api_view(['GET'])
-@permission_classes([AllowAny])
-def get_all_comments(request):
-    replies = Reply.objects.all()
-    serializer = ReplySerializer(replies, many=True)
-    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET', 'POST'])
@@ -32,19 +26,3 @@ def user_reply(request):
         replies = Reply.objects.filter(user_id=request.user.id)
         serializer = ReplySerializer(replies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
-@api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([IsAuthenticated])
-def reply_detail(request, pk):
-    reply = get_object_or_404(Reply, pk = pk)
-    if request.method == 'GET':
-        serializer = ReplySerializer(reply);
-        return Response(serializer.data)
-    elif request.method == 'PUT':
-        serializer = ReplySerializer(reply, data = request.data)
-        serializer.is_valid()
-        serializer.save()
-        return Response(serializer.data)
-    elif request.method == 'DELETE':
-        reply.delete()
-        return Response(status = status.HTTP_204_NO_CONTENT)

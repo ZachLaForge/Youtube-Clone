@@ -4,6 +4,5 @@ from . import views
 
 
 urlpatterns = [
-	path('', views.user_reply),
-	path('<int:pk>/', views.reply_detail)
+	path('', views.user_reply)
 ]

@@ -14,34 +14,21 @@ def get_all_comments(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def user_comment(request):
-    
-    if request.method == 'POST':
         serializer = CommentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-    elif request.method == 'GET':
-        comments = Comment.objects.filter(user_id=request.user.id)
-        serializer = CommentSerializer(comments, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def comment_detail(request, pk):
-    comment = get_object_or_404(Comment, pk = pk)
-    if request.method == 'GET':
-        serializer = CommentSerializer(comment);
-        return Response(serializer.data)
-    elif request.method == 'PUT':
+def user_comment_update(request, pk):
+        comment = get_object_or_404(Comment, pk = pk)
         serializer = CommentSerializer(comment, data = request.data)
         serializer.is_valid()
         serializer.save()
         return Response(serializer.data)
-    elif request.method == 'DELETE':
-        comment.delete()
-        return Response(status = status.HTTP_204_NO_CONTENT)
+ 
