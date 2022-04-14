@@ -32,7 +32,7 @@ def user_comment(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
-def c_detail(request, pk):
+def comment_detail(request, pk):
     comment = get_object_or_404(Comment, pk = pk)
     if request.method == 'GET':
         serializer = CommentSerializer(comment);

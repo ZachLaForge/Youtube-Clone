@@ -19,7 +19,7 @@ def get_all_comments(request):
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
-def user_comment(request):
+def user_reply(request):
 
     if request.method == 'POST':
         serializer = ReplySerializer(data=request.data)
@@ -35,7 +35,7 @@ def user_comment(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
-def c_detail(request, pk):
+def reply_detail(request, pk):
     reply = get_object_or_404(Reply, pk = pk)
     if request.method == 'GET':
         serializer = ReplySerializer(reply);
