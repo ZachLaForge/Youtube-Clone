@@ -23,6 +23,6 @@ def user_reply(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     elif request.method == 'GET':
-        replies = Reply.objects.filter(user_id=request.user.id)
+        replies = Reply.objects.all()
         serializer = ReplySerializer(replies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)

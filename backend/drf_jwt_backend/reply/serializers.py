@@ -7,4 +7,4 @@ class ReplySerializer(serializers.ModelSerializer):
         fields = ['id', 'user', 'comment', 'text']
         depth = 1
     
-    comment = serializers.IntegerField(write_only = True)
+    # comment = serializers.IntegerField(write_only = True)
