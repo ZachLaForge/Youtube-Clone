@@ -4,6 +4,6 @@ from . import views
 
 
 urlpatterns = [
-	path('music/', views.user_reply),
-	path('music/<int:pk>/', views.reply_detail),
+	path('', views.user_reply),
+	path('<int:pk>/', views.reply_detail)
 ]
