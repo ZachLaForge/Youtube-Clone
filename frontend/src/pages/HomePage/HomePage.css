@@ -1,0 +1,10 @@
+.center {
+    text-align: center;
+}
+
+.grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px;
+}

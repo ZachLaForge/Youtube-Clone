@@ -1,5 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import ReactPlayer from "react-player";
+import "./HomePage.css"
 
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
@@ -26,13 +28,44 @@ const HomePage = () => {
     fetchCars();
   }, [token]);
   return (
-    <div className="container">
-      <h1>
+    <div>
+      <h1 className="center">
         Welcome to your homepage
       </h1>
-      <iframe src="https://www.youtube.com/watch?v=8iQMTrC-spc" width="50%" height="300">
+      <div className="grid">
+        <a>
+        <ReactPlayer url="https://www.youtube.com/watch?v=8iQMTrC-spc"  />
+        </a>
+        <a>
+        <ReactPlayer url="https://www.youtube.com/watch?v=8IHqntr8FjY"  />
+        </a>
+        <a>
+        <ReactPlayer url="https://www.youtube.com/watch?v=QynNpzqYt0Y"  />
+        </a>
+      </div>
+      <div className="grid">
+        <a>
+        <ReactPlayer url="https://www.youtube.com/watch?v=8iQMTrC-spc"  />
+        </a>
+        <a>
+        <ReactPlayer url="https://www.youtube.com/watch?v=8IHqntr8FjY"  />
+        </a>
+        <a>
+        <ReactPlayer url="https://www.youtube.com/watch?v=QynNpzqYt0Y"  />
+        </a>
+      </div>
+      <div className="grid">
+        <a>
+        <ReactPlayer url="https://www.youtube.com/watch?v=8iQMTrC-spc"  />
+        </a>
+        <a>
+        <ReactPlayer url="https://www.youtube.com/watch?v=8IHqntr8FjY"  />
+        </a>
+        <a>
+        <ReactPlayer url="https://www.youtube.com/watch?v=QynNpzqYt0Y"  />
+        </a>
+      </div>
 
-      </iframe>
       {/* <h1>Home Page for {user.username}!</h1>
       {cars &&
         cars.map((car) => (
