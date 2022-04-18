@@ -1,7 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import ReactPlayer from "react-player";
+import { useNavigate, Link } from "react-router-dom";
 import "./HomePage.css"
+import hqdefault from "../Images/hqdefault.jpg"
+import linus from "../Images/linus.jpg"
 
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
@@ -33,38 +35,34 @@ const HomePage = () => {
         Welcome to your homepage
       </h1>
       <div className="grid">
+        <Link to="video" style={{ textDecoration: "none", color: "white" }}>
         <a>
-        <ReactPlayer url="https://www.youtube.com/watch?v=8iQMTrC-spc"  />
+          <img src={hqdefault}></img>
+        </a>
+        </Link>
+        <Link to="linus" style={{ textDecoration: "none", color: "white" }}>
+        <a>
+          <img src={linus}></img>
+        </a>
+        </Link>
+      </div>
+      <div className="grid">
+        <a>
+          <img src={hqdefault}></img>
         </a>
         <a>
-        <ReactPlayer url="https://www.youtube.com/watch?v=8IHqntr8FjY"  />
-        </a>
-        <a>
-        <ReactPlayer url="https://www.youtube.com/watch?v=QynNpzqYt0Y"  />
+          <img src={linus}></img>
         </a>
       </div>
       <div className="grid">
         <a>
-        <ReactPlayer url="https://www.youtube.com/watch?v=8iQMTrC-spc"  />
+          <img src={hqdefault}></img>
         </a>
         <a>
-        <ReactPlayer url="https://www.youtube.com/watch?v=8IHqntr8FjY"  />
-        </a>
-        <a>
-        <ReactPlayer url="https://www.youtube.com/watch?v=QynNpzqYt0Y"  />
+          <img src={linus}></img>
         </a>
       </div>
-      <div className="grid">
-        <a>
-        <ReactPlayer url="https://www.youtube.com/watch?v=8iQMTrC-spc"  />
-        </a>
-        <a>
-        <ReactPlayer url="https://www.youtube.com/watch?v=8IHqntr8FjY"  />
-        </a>
-        <a>
-        <ReactPlayer url="https://www.youtube.com/watch?v=QynNpzqYt0Y"  />
-        </a>
-      </div>
+
 
       {/* <h1>Home Page for {user.username}!</h1>
       {cars &&

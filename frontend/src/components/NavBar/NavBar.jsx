@@ -22,6 +22,11 @@ const Navbar = () => {
             <button onClick={() => navigate("/login")}>Login</button>
           )}
         </li>
+        <li>
+          <Link to="register" style={{ textDecoration: "none", color: "white" }}>
+            <b>Register</b>
+          </Link>
+        </li>
       </ul>
     </div>
   );
