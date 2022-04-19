@@ -14,17 +14,22 @@ const AddComment = (props) => {
     const [dislikes, setDislikes] = useState('')
 
     async function handleSubmit(event) {
+        let body = {
+            user: user,
+            video_id: video_id,
+            text: text,
+            likes: likes,
+            dislikes: dislikes
+
+        }
         event.preventDefault()
+        console.log(token)
         try {
             const response = await axios.post('http://127.0.0.1:8000/comment/auth/', {
                 headers: {
                     Authorization: "Bearer " + token,
                   },
-                user: users,
-                video_id: video_id,
-                text: text,
-                likes: likes,
-                dislikes: dislikes
+                body: body
             })
             window.location.reload(true)
         }
@@ -43,8 +48,8 @@ const AddComment = (props) => {
                 </h2>
             </div>
             <div className="border-bar">
-                <label className="spacing">User</label>
-                <input type="number" value={users} onChange={(event) => setUser(event.target.value)} />
+                {/* <label className="spacing">User</label>
+                <input type="number" value={users} onChange={(event) => setUser(event.target.value)} /> */}
                 <label className="spacing">Video_id:</label>
                 <input type="text" value={video_id} onChange={(event) => setVideo_Id(event.target.value)} />
                 <label className="spacing">Text:</label>
