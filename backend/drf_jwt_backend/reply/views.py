@@ -26,3 +26,4 @@ def user_reply(request):
         replies = Reply.objects.all()
         serializer = ReplySerializer(replies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
