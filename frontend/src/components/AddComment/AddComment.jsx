@@ -15,7 +15,7 @@ const AddComment = (props) => {
 
     async function handleSubmit(event) {
         let body = {
-            user: user,
+            user: 1,
             video_id: video_id,
             text: text,
             likes: likes,
@@ -25,11 +25,10 @@ const AddComment = (props) => {
         event.preventDefault()
         console.log(token)
         try {
-            const response = await axios.post('http://127.0.0.1:8000/comment/auth/', {
+            const response = await axios.post('http://127.0.0.1:8000/comment/auth/', body, {
                 headers: {
                     Authorization: "Bearer " + token,
                   },
-                body: body
             })
             window.location.reload(true)
         }
