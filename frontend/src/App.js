@@ -19,17 +19,29 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
+  const [comments, setComments] = useState([]);
+  // const [relatedVidoes, setRelatedVideos] = useState([])
+  // const [selectedVidoe, setSelectedVideo] = useState("")
 
-    const [comments, setComments] = useState([])
+  // const updateSelectedVideo(someVideoId) {
+  //   setSelectedVideo(someVideoId)
+  //   getRelatedVideos(someVideoId)
+
+  // }
+
+  // // * YoutTube API Calls
+  // async function getRelatedVideos(selectedVideo) {
+  //   let response = await axios.get(`https//youtube/q=${selectedVideo}`) // injection to pass argument
+  //   setRelatedVideos(response.data)
+  // };
 
   useEffect(() => {
-      getAllComments()
-  }, [])
+    getAllComments();
+  }, []);
 
-  async function getAllComments(){
-      let response = await axios.get('http://127.0.0.1:8000/comment/')
-      setComments(response.data)
-
+  async function getAllComments() {
+    let response = await axios.get("http://127.0.0.1:8000/comment/");
+    setComments(response.data);
   }
 
   return (
@@ -46,13 +58,13 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/video" element={<VideoPage commentAll = {comments} />} />
+        <Route path="/video" element={<VideoPage commentAll={comments} />} />
+        {/* <Route page="/searchResults" element={<SearchResults searchData={searchData} updateSelectedVideo={updateSelectedVideo} />} /> */}
         <Route path="/linus" element={<LinusPage />} />
       </Routes>
       <Footer />
     </div>
   );
 }
-
 
 export default App;
